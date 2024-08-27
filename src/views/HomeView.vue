@@ -1,25 +1,20 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted } from "vue";
 import PostList from "../components/PostList.vue";
+import { error, loadPosts, posts } from "../composable/getPosts";
 
-const posts = ref([
-  {
-    id: 1,
-    title: "Artikel Pertama",
-    body: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum accusantium placeat, ullam quisquam quas sed sit nulla voluptate esse natus quasi itaque ipsum exercitationem mollitia molestiae distinctio expedita, perferendis repellat.",
-  },
-  {
-    id: 2,
-    title: "Artikel Kedua",
-    body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta ducimus iste molestias, quidem adipisci aspernatur quod dolores atque odio nesciunt, non velit perferendis architecto mollitia accusamus est a vitae inventore!",
-  },
-]);
+onMounted(() => {
+  loadPosts();
+});
 </script>
 
 <template>
   <main class="home">
     <h1>Home</h1>
-    <PostList :posts="posts" />
+    <div v-if="error">
+      {{ error }}
+    </div>
+    <PostList v-else :posts="posts" />
   </main>
 </template>
 
