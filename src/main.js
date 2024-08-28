@@ -1,11 +1,21 @@
-import './assets/main.css'
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.css";
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import "./assets/styles.css";
+import "./assets/main.css";
 
-const app = createApp(App)
+import jQuery from "jquery";
+window.$ = jQuery;
 
-app.use(router)
+import "@fortawesome/fontawesome-free/css/all.css";
+import "@fortawesome/fontawesome-free/js/all.js";
 
-app.mount('#app')
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
+
+const app = createApp(App);
+
+app.use(router);
+
+app.mount("#app");

@@ -36,7 +36,7 @@ async function addPost() {
 </script>
 
 <template>
-  <div class="content">
+  <main>
     <form @submit.prevent="addPost">
       <div>
         <label for="title">Title</label>
@@ -61,11 +61,11 @@ async function addPost() {
           @keydown.enter.prevent="insertTag"
         />
       </div>
-      <button type="submit">Create</button>
+      <button class="btn btn-primary" type="submit">Create</button>
     </form>
 
     <div v-for="tag in tags" :key="tag">#{{ tag }}</div>
-  </div>
+  </main>
 </template>
 
 <style scoped>

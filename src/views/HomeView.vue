@@ -19,7 +19,9 @@ function navigateToAddPost() {
 <template>
   <main class="home">
     <h1>Home</h1>
-    <button @click="navigateToAddPost">+ Add Post</button>
+    <button class="btn btn-primary mb-3" @click="navigateToAddPost">
+      + Add Post
+    </button>
     <div v-if="error">
       {{ error }}
     </div>
@@ -29,12 +31,3 @@ function navigateToAddPost() {
     <PostList v-else :posts="posts" />
   </main>
 </template>
-
-<style scoped>
-.home {
-  width: 90%;
-  height: 100vh;
-  margin: 0 auto;
-  padding: 2rem 0;
-}
-</style>
