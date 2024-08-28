@@ -1,7 +1,8 @@
 <script setup>
 import { onMounted } from "vue";
 import PostList from "../components/PostList.vue";
-import { error, loadPosts, posts } from "../composable/getPosts";
+import { error, loadPosts, posts, isLoading } from "../composable/getPosts";
+import LoadingVue from "../components/LoadingVue.vue";
 
 onMounted(() => {
   loadPosts();
@@ -13,6 +14,9 @@ onMounted(() => {
     <h1>Home</h1>
     <div v-if="error">
       {{ error }}
+    </div>
+    <div v-else-if="isLoading">
+      <LoadingVue />
     </div>
     <PostList v-else :posts="posts" />
   </main>

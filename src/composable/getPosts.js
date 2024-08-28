@@ -2,9 +2,11 @@ import { ref } from "vue";
 
 const posts = ref([]);
 const error = ref(null);
+const isLoading = ref(false);
 
 async function loadPosts() {
   try {
+    isLoading.value = true;
     error.value = null;
     let data = await fetch("http://localhost:3000/posts");
     if (!data.ok) {
@@ -13,7 +15,9 @@ async function loadPosts() {
     posts.value = await data.json();
   } catch (err) {
     error.value = err.message;
+  } finally {
+    isLoading.value = false;
   }
 }
 
-export { posts, error, loadPosts };
+export { posts, error, isLoading, loadPosts };

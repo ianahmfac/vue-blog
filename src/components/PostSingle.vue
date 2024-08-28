@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from "vue";
+import { RouterLink } from "vue-router";
 
 const { post } = defineProps({
   post: Object,
@@ -12,7 +13,9 @@ const snippet = computed(() => {
 
 <template>
   <div>
-    <h3>{{ post.title }}</h3>
+    <RouterLink :to="{ name: 'post-detail', params: { id: post.id } }">
+      <h3>{{ post.title }}</h3>
+    </RouterLink>
     <p>{{ snippet }}</p>
   </div>
 </template>
