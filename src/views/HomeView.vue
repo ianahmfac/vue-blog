@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted } from "vue";
-import PostList from "../components/PostList.vue";
+import PostList from "../components/posts/PostList.vue";
 import { error, loadPosts, posts, isLoading } from "../composable/getPosts";
 import LoadingVue from "../components/LoadingVue.vue";
 import { useRouter } from "vue-router";
@@ -17,17 +17,31 @@ function navigateToAddPost() {
 </script>
 
 <template>
-  <main class="home">
-    <h1>Home</h1>
-    <button class="btn btn-primary mb-3" @click="navigateToAddPost">
-      + Add Post
-    </button>
-    <div v-if="error">
-      {{ error }}
+  <!-- Page Header-->
+  <header class="masthead" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="site-heading">
+            <h1>Blog of @ianahmfac</h1>
+            <span class="subheading">Enjoy your reading guys :)</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div v-else-if="isLoading">
-      <LoadingVue />
+  </header>
+  <!-- Main Content-->
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-7">
+        <div v-if="error">
+          {{ error }}
+        </div>
+        <div v-else-if="isLoading">
+          <LoadingVue />
+        </div>
+        <PostList v-else :posts="posts" />
+      </div>
     </div>
-    <PostList v-else :posts="posts" />
-  </main>
+  </div>
 </template>

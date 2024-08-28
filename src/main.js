@@ -1,11 +1,12 @@
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 
-import "./assets/styles.css";
-import "./assets/main.css";
+import "@/assets/styles.css";
+import "@/assets/main.css";
 
 import jQuery from "jquery";
 window.$ = jQuery;
+import "@/assets/scripts.js";
 
 import "@fortawesome/fontawesome-free/css/all.css";
 import "@fortawesome/fontawesome-free/js/all.js";

@@ -7,9 +7,12 @@ const { posts } = defineProps({
 </script>
 
 <template>
-  <div class="post-list">
-    <div v-for="post in posts" :key="post.id">
+  <div v-for="post in posts" :key="post.id">
+    <!-- Post preview-->
+    <div class="post-preview">
       <PostSingle :post="post" />
     </div>
+    <!-- Divider-->
+    <hr class="my-4" />
   </div>
 </template>
