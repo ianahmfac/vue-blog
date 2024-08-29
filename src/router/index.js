@@ -20,6 +20,11 @@ const router = createRouter({
       name: "post-create",
       component: () => import("../views/posts/CreatePostView.vue"),
     },
+    {
+      path: "/tag/:tag",
+      name: "post-tag",
+      component: () => import("../views/posts/TagView.vue"),
+    },
   ],
 });
 
