@@ -47,6 +47,32 @@
         "DB",
         "React"
       ]
+    },
+    {
+      "id": "4d9e",
+      "title": "Create Post From Clean Blog",
+      "body": "Ini adalah isi dari post clean blog yang telah diimplementasikan dalam project vue",
+      "tags": [
+        "vue.js",
+        "Vue3"
+      ]
+    },
+    {
+      "id": "fa66",
+      "title": "New Post",
+      "body": "New post by Ian Ahmad Fachriza",
+      "tags": [
+        "vue.js",
+        "Javascript"
+      ]
+    },
+    {
+      "id": "d70e",
+      "title": "Title Post",
+      "body": "Content post",
+      "tags": [
+        "test"
+      ]
     }
   ]
 }
