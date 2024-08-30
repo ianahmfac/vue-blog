@@ -1,9 +1,16 @@
 <script setup>
 import { onMounted } from "vue";
-import { loadPost, post, error } from "../../composable/getPost";
+import { loadPost, post, error, deletePost } from "../../composable/getPost";
 import LoadingVue from "../../components/LoadingVue.vue";
+import { useRouter } from "vue-router";
 
 const { id } = defineProps(["id"]);
+const router = useRouter();
+
+async function deleteThisPost() {
+  await deletePost(id);
+  router.replace({ name: "home" });
+}
 
 onMounted(() => {
   loadPost(id);
@@ -32,6 +39,12 @@ onMounted(() => {
                     >#{{ tag }}</span
                   >
                 </span>
+                <button
+                  class="btn btn-sm btn-danger mt-3"
+                  @click="deleteThisPost"
+                >
+                  Delete Post
+                </button>
               </div>
             </div>
           </div>

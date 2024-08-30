@@ -1,9 +1,12 @@
 import { ref } from "vue";
-import { doc, getDoc } from "firebase/firestore";
+import { deleteDoc, doc, getDoc } from "firebase/firestore";
 import { projectFirestore } from "../firebase/config";
+import { useRoute, useRouter } from "vue-router";
 
 const post = ref(null);
 const error = ref(null);
+
+const router = useRouter();
 
 async function loadPost(id) {
   try {
@@ -23,4 +26,8 @@ async function loadPost(id) {
   }
 }
 
-export { post, error, loadPost };
+async function deletePost(id) {
+  return deleteDoc(doc(projectFirestore, "posts", id));
+}
+
+export { post, error, loadPost, deletePost };
