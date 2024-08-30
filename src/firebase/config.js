@@ -14,6 +14,4 @@ initializeApp(firebaseConfig);
 
 const projectFirestore = getFirestore();
 
-const postCollection = collection(projectFirestore, "posts");
-
-export { projectFirestore, postCollection };
+export { projectFirestore };

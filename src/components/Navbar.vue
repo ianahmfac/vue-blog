@@ -1,5 +1,7 @@
 <script setup>
-import { RouterLink } from "vue-router";
+import { RouterLink, useRoute } from "vue-router";
+
+const route = useRoute();
 </script>
 
 <template>
@@ -21,7 +23,7 @@ import { RouterLink } from "vue-router";
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ms-auto py-4 py-lg-0">
+        <ul class="navbar-nav ms-auto py-4 py-lg-0 d-flex align-items-center">
           <li class="nav-item">
             <RouterLink
               class="nav-link px-lg-3 py-3 py-lg-4"
@@ -31,6 +33,14 @@ import { RouterLink } from "vue-router";
           </li>
           <li class="nav-item">
             <a class="nav-link px-lg-3 py-3 py-lg-4" href="#">About</a>
+          </li>
+          <li class="nav-item" v-if="route.name != 'post-create'">
+            <RouterLink
+              :to="{ name: 'post-create' }"
+              class="nav-link px-lg-2 py-3 py-lg-4"
+            >
+              <div class="btn btn-sm btn-primary">+ Post</div>
+            </RouterLink>
           </li>
         </ul>
       </div>

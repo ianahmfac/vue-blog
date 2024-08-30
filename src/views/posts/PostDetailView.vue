@@ -12,7 +12,7 @@ onMounted(() => {
 
 <template>
   <main>
-    <div class="content" v-if="error">
+    <div class="content text-center" v-if="error">
       {{ error }}
     </div>
     <div class="content" v-else-if="post">

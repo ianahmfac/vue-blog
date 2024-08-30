@@ -1,6 +1,6 @@
 import { ref } from "vue";
-import { postCollection } from "../firebase/config";
-import { getDocs } from "firebase/firestore";
+import { projectFirestore } from "../firebase/config";
+import { collection, getDocs } from "firebase/firestore";
 
 const posts = ref([]);
 const error = ref(null);
@@ -11,7 +11,7 @@ async function loadPosts() {
     isLoading.value = true;
     error.value = null;
 
-    const response = await getDocs(postCollection);
+    const response = await getDocs(collection(projectFirestore, "posts"));
     const data = [];
     response.forEach((doc) => {
       data.push({
