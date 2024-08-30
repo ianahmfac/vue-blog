@@ -1,4 +1,6 @@
 import { ref } from "vue";
+import { projectFirestore } from "../firebase/config";
+import { collection, getDocs } from "firebase/firestore";
 
 const posts = ref([]);
 const error = ref(null);
@@ -8,11 +10,17 @@ async function loadPosts() {
   try {
     isLoading.value = true;
     error.value = null;
-    let data = await fetch("http://localhost:3000/posts");
-    if (!data.ok) {
-      throw Error("No data found");
-    }
-    posts.value = await data.json();
+
+    const colRef = collection(projectFirestore, "posts");
+    const response = await getDocs(colRef);
+    const data = [];
+    response.forEach((doc) => {
+      data.push({
+        ...doc.data(),
+        id: doc.id,
+      });
+    });
+    posts.value = data;
   } catch (err) {
     error.value = err.message;
   } finally {
