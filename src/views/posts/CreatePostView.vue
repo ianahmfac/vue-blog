@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { addDoc, collection } from "firebase/firestore";
+import { projectFirestore } from "../../firebase/config";
 
 const router = useRouter();
 
@@ -23,13 +25,7 @@ async function addPost() {
     tags: tags.value,
   };
 
-  await fetch("http://localhost:3000/posts/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(post),
-  });
+  await addDoc(collection(projectFirestore, "posts"), post);
 
   router.replace({ name: "home" });
 }
